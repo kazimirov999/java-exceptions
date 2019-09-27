@@ -10,11 +10,11 @@ public class Command {
     private Operation operation;
 
 
-    public void execute(String command) throws IOException, ClassNotFoundException {
+    public Object execute(String command) throws IOException, ClassNotFoundException {
         operation = getOperation(command);
         argument = getArgument(command);
 
-        System.out.println(operation.doOperation(argument));
+        return operation.doOperation(argument);
     }
 
 

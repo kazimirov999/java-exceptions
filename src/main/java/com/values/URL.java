@@ -1,10 +1,9 @@
 package com.values;
 
 import com.exception.IllegalArgumentException;
+import org.apache.commons.validator.routines.RegexValidator;
 
-import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.Serializable;
 
 
 public class URL implements Serializable{
@@ -27,14 +26,12 @@ public class URL implements Serializable{
 
     public static  URL fromString(String url){
 
-        String uriRegex = "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
-        Pattern pattern = Pattern.compile(uriRegex);
-        Matcher matcher = pattern.matcher(url);
+        RegexValidator regexValidator = new RegexValidator("^(([^:/?#]+):)(//([^/?#]*))([^?#]*)(\\?([^#]*))?(#(.*))?");
 
-        if(matcher.find() && matcher.group(1) != null) {
+        if(regexValidator.isValid(url)) {
 
-            return new URL(matcher.group(1), matcher.group(2),
-                    matcher.group(3), matcher.group(4), matcher.group(9), matcher.group());
+            String[] urlArgs = regexValidator.match(url);
+            return new URL(urlArgs[1], urlArgs[2], urlArgs[3], urlArgs[4], urlArgs[8], url);
 
         }
         else{
