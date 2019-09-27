@@ -1,8 +1,8 @@
 package com.values;
 
+import org.apache.commons.validator.routines.RegexValidator;
+
 import java.io.Serializable;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class URN  implements Serializable {
 
@@ -18,15 +18,13 @@ public class URN  implements Serializable {
 
     public static URN fromString(String urn){
 
-        String urnRegex = "^urn:([a-z0-9][a-z0-9-]{0,31}):(([a-z0-9()+,\\-.:=@;$_!*']|%[0-9a-f]{2})+$)";
+        RegexValidator regexValidator
+                = new RegexValidator("^urn:([a-z0-9][a-z0-9-]{0,31}):(([a-z0-9()+,\\-.:=@;$_!*']|%[0-9a-f]{2})+$)");
 
-        Pattern pattern = Pattern.compile(urnRegex, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(urn);
+        if(regexValidator.isValid(urn)) {
+            String[] urnArgs = regexValidator.match(urn);
 
-        if(matcher.matches()) {
-
-            return new URN(matcher.group(1), matcher.group(2), matcher.group());
-
+            return new URN(urnArgs[0], urnArgs[1], urn);
         }
         else{
 
