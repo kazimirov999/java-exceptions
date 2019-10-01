@@ -23,7 +23,19 @@ public class Url implements Serializable {
     }
 
     public static Url createUrl(String urlToString) throws MalformedURLException {
-        return new Url("", "", " ", "", "");
+        UrlValidator urlValidator = new UrlValidator ();
+        Url url = null;
+
+        if (!urlValidator.isValid(urlToString)) {
+
+            System.out.println("It is not URL");
+        }  else {
+            URL conversionUrl = new URL(urlToString);
+
+            url = new Url(conversionUrl.getProtocol(), conversionUrl.getAuthority(), conversionUrl.getPath(), conversionUrl.getQuery(), conversionUrl.toString());
+        }
+
+        return url;
     }
 
     @Override
@@ -45,3 +57,4 @@ public class Url implements Serializable {
                 Objects.equals(allUrl, url.allUrl);
     }
 }
+

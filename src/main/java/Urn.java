@@ -15,7 +15,17 @@ public class Urn implements Serializable {
     }
 
     public static Urn checkUrn(String string) {
-        return new Urn("", "");
+        RegexValidator regexValidator = new RegexValidator("^urn:([a-z0-9][a-z0-9-]{0,31}):(([a-z0-9()+,\\-.:=@;$_!*']|%[0-9a-f]{2})+$)");
+        Urn urn = null;
+        if (!regexValidator.isValid(string)) {
+            System.out.println(" It is not URN!");
+        }
+        else {
+            String [] urnArgs = regexValidator.match(string);
+            urn = new Urn(urnArgs[0],urnArgs[1]);
+            System.out.println("It is URN " + urn);
+        }
+        return urn;
     }
 
     @Override
