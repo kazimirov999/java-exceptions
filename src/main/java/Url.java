@@ -57,4 +57,3 @@ public class Url implements Serializable {
                 Objects.equals(allUrl, url.allUrl);
     }
 }
-
