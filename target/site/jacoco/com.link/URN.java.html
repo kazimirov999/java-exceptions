@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>URN.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-exeptionas</a> &gt; <a href="index.source.html" class="el_package">com.link</a> &gt; <span class="el_source">URN.java</span></div><h1>URN.java</h1><pre class="source lang-java linenums">package com.link;
+
+
+import java.io.Serializable;
+
+public class URN  implements Link, Serializable {
+
+    private String nid;
+    private String nss;
+    private String allName;
+
+<span class="fc" id="L12">    public URN(String nid, String nss, String allName) {</span>
+<span class="fc" id="L13">        this.nid = nid;</span>
+<span class="fc" id="L14">        this.nss = nss;</span>
+<span class="fc" id="L15">        this.allName = allName;</span>
+<span class="fc" id="L16">    }</span>
+
+
+    @Override
+    public String toString() {
+<span class="nc" id="L21">        return allName;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (o instanceof URN) {</span>
+<span class="nc" id="L27">            URN c = (URN) o;</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (this.allName.equals(c.allName)) {</span>
+<span class="nc" id="L29">                return true;</span>
+            }
+        }
+<span class="nc" id="L32">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
