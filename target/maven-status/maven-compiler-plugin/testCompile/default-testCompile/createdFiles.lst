@@ -1,0 +1,14 @@
+com\config\UrnConfigurationTest.class
+com\comand\CommandExecutorTest.class
+com\command\CheckCommandTest.class
+com\config\ConfigurationManagerTest.class
+com\comand\OperationManagerTest.class
+com\comand\CommandLineListenerTest.class
+com\command\GetCommandTest.class
+com\comand\InputParserTest.class
+com\command\AddCommandTest.class
+com\command\DeleteCommandTest.class
+com\command\ConfigurationCommandTest.class
+com\command\ExitCommandTest.class
+com\config\UrlConfigurationTest.class
+com\command\CleanCommandTest.class

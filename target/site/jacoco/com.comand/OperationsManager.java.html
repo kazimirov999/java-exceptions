@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OperationsManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-exeptionas</a> &gt; <a href="index.source.html" class="el_package">com.comand</a> &gt; <span class="el_source">OperationsManager.java</span></div><h1>OperationsManager.java</h1><pre class="source lang-java linenums">package com.comand;
+
+import com.exception.OutOfBoundsUrlsException;
+import com.exception.ValueNotFoundException;
+import com.link.Link;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+
+public class OperationsManager implements Serializable {
+
+    private static final long serialVersionUID = 42324L;
+    private int size;
+    private Map&lt;String, Link&gt; links;
+    private List&lt;Instant&gt; dateSave;
+    private List&lt;Instant&gt; dateRead;
+
+
+<span class="fc" id="L24">    public OperationsManager(int size, Map&lt;String, Link&gt; links, List&lt;Instant&gt; dateRead, List&lt;Instant&gt; dateSave) {</span>
+<span class="fc" id="L25">        this.size = size;</span>
+<span class="fc" id="L26">        this.links = links;</span>
+<span class="fc" id="L27">        this.dateRead = dateRead;</span>
+<span class="fc" id="L28">        this.dateSave = dateSave;</span>
+<span class="fc" id="L29">    }</span>
+
+
+    public String add(Link argument, String key) {
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (links.size() == size) {</span>
+<span class="fc" id="L34">            throw new OutOfBoundsUrlsException(&quot;Max size for map of com.links is &quot; + size);</span>
+        } else {
+<span class="fc" id="L36">            links.put(key, argument);</span>
+<span class="fc" id="L37">            return key;</span>
+        }
+    }
+
+
+    public String check(Link link) {
+<span class="fc" id="L43">        return links.keySet()</span>
+<span class="fc" id="L44">                .stream()</span>
+<span class="fc" id="L45">                .filter(key -&gt; link.equals(links.get(key)))</span>
+<span class="fc" id="L46">                .findFirst()</span>
+<span class="fc" id="L47">                .orElseThrow(() -&gt; new ValueNotFoundException(&quot;Value is not found in map&quot;));</span>
+    }
+
+    public Link getUrlById(String key) {
+
+<span class="fc" id="L52">        Link link = links.get(key);</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (link == null) {</span>
+<span class="fc" id="L55">            throw new ValueNotFoundException(&quot;Key is not found in map&quot;);</span>
+        }
+
+<span class="fc" id="L58">        return link;</span>
+    }
+
+    public String deleteById(String key) {
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (links.containsKey(key)) {</span>
+<span class="fc" id="L64">            return key + &quot; &quot; + links.remove(key);</span>
+        } else {
+<span class="fc" id="L66">            throw new ValueNotFoundException(&quot;Key is not found in map&quot;);</span>
+        }
+
+    }
+
+    public Map&lt;String, Link&gt; cleanAll() {
+<span class="fc" id="L72">        Map&lt;String, Link&gt; oldMap = Map.copyOf(links);</span>
+<span class="fc" id="L73">        links.clear();</span>
+
+<span class="fc" id="L75">        return oldMap;</span>
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+<span class="fc" id="L79">        dateSave.add(Instant.now());</span>
+<span class="fc" id="L80">        out.writeObject(size);</span>
+<span class="fc" id="L81">        out.writeObject(links);</span>
+<span class="fc" id="L82">        out.writeObject(dateRead);</span>
+<span class="fc" id="L83">        out.writeObject(dateSave);</span>
+
+<span class="fc" id="L85">    }</span>
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+<span class="fc" id="L88">        size = (int) in.readObject();</span>
+<span class="fc" id="L89">        links = (Map&lt;String, Link&gt;) in.readObject();</span>
+<span class="fc" id="L90">        dateRead = (List&lt;Instant&gt;) in.readObject();</span>
+<span class="fc" id="L91">        dateSave = (List&lt;Instant&gt;) in.readObject();</span>
+<span class="fc" id="L92">        dateRead.add(Instant.now());</span>
+<span class="fc" id="L93">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

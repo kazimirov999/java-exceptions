@@ -1,0 +1,34 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+java-exeptionas,com,Main,27,0,0,0,7,0,2,0,2,0
+java-exeptionas,com.comand,OperationsManager,0,152,0,6,0,37,0,13,0,10
+java-exeptionas,com.comand,CommandLineListener,0,60,0,6,0,14,0,6,0,3
+java-exeptionas,com.comand,Operation.new Operation() {...},7,5,0,0,2,1,2,1,2,1
+java-exeptionas,com.comand,Operation.new Operation() {...},7,5,0,0,2,1,2,1,2,1
+java-exeptionas,com.comand,Operation.new Operation() {...},0,13,0,0,0,3,0,3,0,3
+java-exeptionas,com.comand,Operation.new Operation() {...},8,5,0,0,2,1,2,1,2,1
+java-exeptionas,com.comand,Operation.new Operation() {...},8,5,0,0,2,1,2,1,2,1
+java-exeptionas,com.comand,Operation.new Operation() {...},8,5,0,0,2,1,2,1,2,1
+java-exeptionas,com.comand,Operation.new Operation() {...},0,13,0,0,0,3,0,3,0,3
+java-exeptionas,com.comand,Operation,0,74,0,0,0,8,0,1,0,1
+java-exeptionas,com.comand,CommandExecutor,0,7,0,0,0,2,0,2,0,2
+java-exeptionas,com.comand,InputParser,0,77,0,4,0,17,0,11,0,9
+java-exeptionas,com.command,ExitCommand,0,16,0,0,0,6,0,2,0,2
+java-exeptionas,com.command,GetCommand,0,15,0,0,0,5,0,2,0,2
+java-exeptionas,com.command,CheckCommand,0,19,0,0,0,6,0,2,0,2
+java-exeptionas,com.command,AddCommand,0,24,0,0,0,7,0,2,0,2
+java-exeptionas,com.command,DeleteCommand,0,14,0,0,0,5,0,2,0,2
+java-exeptionas,com.command,CleanCommand,0,14,0,0,0,5,0,2,0,2
+java-exeptionas,com.command,ConfigurationCommand,0,16,0,0,0,5,0,2,0,2
+java-exeptionas,com.config,Configuration,0,54,0,0,0,14,0,2,0,2
+java-exeptionas,com.config,UrnConfiguration,0,61,0,2,0,16,0,7,0,6
+java-exeptionas,com.config,UrlConfiguration,0,66,0,2,0,16,0,7,0,6
+java-exeptionas,com.config,Configurations.new Configurations() {...},0,10,0,0,0,2,0,2,0,2
+java-exeptionas,com.config,Configurations.new Configurations() {...},0,10,0,0,0,2,0,2,0,2
+java-exeptionas,com.config,Configurations,0,24,0,0,0,3,0,1,0,1
+java-exeptionas,com.config,ConfigurationManager,7,20,0,0,3,8,2,3,2,3
+java-exeptionas,com.link,URN,19,12,4,0,6,5,4,1,2,1
+java-exeptionas,com.link,URL,19,21,4,0,6,8,4,1,2,1
+java-exeptionas,com.exception,OperationException,0,4,0,0,0,2,0,1,0,1
+java-exeptionas,com.exception,OutOfBoundsUrlsException,0,4,0,0,0,2,0,1,0,1
+java-exeptionas,com.exception,ValueNotFoundException,0,4,0,0,0,2,0,1,0,1
+java-exeptionas,com.exception,CommandNotFoundException,0,4,0,0,0,2,0,1,0,1
