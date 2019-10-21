@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+projectMy,default,Urn,9,95,6,6,1,17,6,4,0,4
+projectMy,default,ValueNotFoundExcetpion,0,4,0,0,0,2,0,1,0,1
+projectMy,default,OutOfLengthException,0,4,0,0,0,2,0,1,0,1
+projectMy,default,Configuration,36,5,4,0,10,3,3,2,1,2
+projectMy,default,Operation,11,151,4,8,6,30,4,9,0,4
+projectMy,default,OperationManager,26,185,2,14,7,43,4,13,2,7
+projectMy,default,SerializationManager,64,53,0,0,20,15,0,3,0,3
+projectMy,default,Main,50,0,0,0,14,0,2,0,2,0
+projectMy,default,OperationException,0,4,0,0,0,2,0,1,0,1
+projectMy,default,Url,23,95,9,9,2,21,10,3,1,3

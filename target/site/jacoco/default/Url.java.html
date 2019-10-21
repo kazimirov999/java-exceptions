@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Url.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">projectMy</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Url.java</span></div><h1>Url.java</h1><pre class="source lang-java linenums">import org.apache.commons.validator.UrlValidator;
+
+import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Objects;
+
+
+public class Url implements Serializable, Link {
+    private String schema;
+    private String authority;
+    private String path;
+    private String query;
+    private String allUrl;
+
+
+<span class="fc" id="L17">    public Url(String schema, String authority, String path, String query, String allUrl) {</span>
+<span class="fc" id="L18">        this.schema = schema;</span>
+<span class="fc" id="L19">        this.authority = authority;</span>
+<span class="fc" id="L20">        this.path = path;</span>
+<span class="fc" id="L21">        this.query = query;</span>
+<span class="fc" id="L22">        this.allUrl = allUrl;</span>
+<span class="fc" id="L23">    }</span>
+
+    public static Url createUrl(String urlToString) throws MalformedURLException {
+<span class="fc" id="L26">        UrlValidator urlValidator = new UrlValidator ();</span>
+<span class="fc" id="L27">        Url url = null;</span>
+
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (!urlValidator.isValid(urlToString)) {</span>
+
+<span class="nc" id="L31">            System.out.println(&quot;It is not URL&quot;);</span>
+        }  else {
+<span class="fc" id="L33">            URL conversionUrl = new URL(urlToString);</span>
+
+<span class="fc" id="L35">            url = new Url(conversionUrl.getProtocol(), conversionUrl.getAuthority(), conversionUrl.getPath(), conversionUrl.getQuery(), conversionUrl.toString());</span>
+        }
+
+<span class="fc" id="L38">        return url;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L43">        return &quot;Url{&quot; +</span>
+                &quot;allUrl='&quot; + allUrl + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L52">        Url url = (Url) o;</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        return Objects.equals(schema, url.schema) &amp;&amp;</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">                Objects.equals(authority, url.authority) &amp;&amp;</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">                Objects.equals(path, url.path) &amp;&amp;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">                Objects.equals(query, url.query) &amp;&amp;</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">                Objects.equals(allUrl, url.allUrl);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
