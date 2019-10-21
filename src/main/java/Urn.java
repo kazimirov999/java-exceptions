@@ -3,7 +3,7 @@ import org.apache.commons.validator.routines.RegexValidator;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Urn implements Serializable {
+public class Urn implements Serializable, Link {
     private String authority;
     private String path;
 

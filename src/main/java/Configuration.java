@@ -21,4 +21,7 @@ public class Configuration {
         return type;
     }
 
+    public static void setType(String type) {
+        Configuration.type = type;
+    }
 }

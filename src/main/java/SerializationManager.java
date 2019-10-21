@@ -1,6 +1,7 @@
 
 import java.io.*;
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
 
 public class SerializationManager implements Serializable {
@@ -8,7 +9,7 @@ public class SerializationManager implements Serializable {
     OperationManager operatoinManager;
 
     public SerializationManager(OperationManager operatoinManager) {
-        this.operatoinManager = operatoinManager;
+        this.operatoinManager = new OperationManager(10, new HashMap());
     }
     protected void writeFile(){
 

@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.Objects;
 
 
-public class Url implements Serializable {
+public class Url implements Serializable, Link {
     private String schema;
     private String authority;
     private String path;

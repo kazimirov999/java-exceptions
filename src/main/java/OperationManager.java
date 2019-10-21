@@ -12,9 +12,6 @@ public class OperationManager<K,V>  {
     protected List<Instant> saveTime = new ArrayList<>();
     protected List<Instant> readTime = new ArrayList<>();
 
-
-
-
     public OperationManager(int size, Map<K, V> linkMap) {
         this.size = size;
         this.linkMap = linkMap;
@@ -38,7 +35,7 @@ public class OperationManager<K,V>  {
         if (linkMap.containsValue(link)) {
             for (Object o : linkMap.keySet()) {
                 if (linkMap.get(o).equals(link)) {
-                    System.out.println(o);
+                    System.out.println(key= (K) o);
                 }
             }
         } else {

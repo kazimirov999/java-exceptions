@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Urn.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">projectMy</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Urn.java</span></div><h1>Urn.java</h1><pre class="source lang-java linenums">import org.apache.commons.validator.routines.RegexValidator;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Urn implements Serializable, Link {
+    private String authority;
+    private String path;
+
+
+<span class="fc" id="L11">    public Urn(String authority, String path) {</span>
+<span class="fc" id="L12">        this.authority = authority;</span>
+<span class="fc" id="L13">        this.path = path;</span>
+
+<span class="fc" id="L15">    }</span>
+
+    public static Urn checkUrn(String string) {
+<span class="fc" id="L18">        RegexValidator regexValidator = new RegexValidator(&quot;^urn:([a-z0-9][a-z0-9-]{0,31}):(([a-z0-9()+,\\-.:=@;$_!*']|%[0-9a-f]{2})+$)&quot;);</span>
+<span class="fc" id="L19">        Urn urn = null;</span>
+<span class="pc bpc" id="L20" title="1 of 2 branches missed.">        if (!regexValidator.isValid(string)) {</span>
+<span class="nc" id="L21">            System.out.println(&quot; It is not URN!&quot;);</span>
+        }
+        else {
+<span class="fc" id="L24">            String [] urnArgs = regexValidator.match(string);</span>
+<span class="fc" id="L25">            urn = new Urn(urnArgs[0],urnArgs[1]);</span>
+<span class="fc" id="L26">            System.out.println(&quot;It is URN &quot; + urn);</span>
+        }
+<span class="fc" id="L28">        return urn;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L33">        return &quot;Urn{&quot; +</span>
+                &quot;authority='&quot; + authority + '\'' +
+                &quot;, path='&quot; + path + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L42" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L43">        Urn urn1 = (Urn) o;</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        return Objects.equals(authority, urn1.authority) &amp;&amp;</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">                Objects.equals(path, urn1.path);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
